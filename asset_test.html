@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>333ARCHIVE BETA</title>
+    <link rel="stylesheet" href="style.css">
+	<link rel="icon" href="assets/favicon.ico">
+	<style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            height: 100vh;
+            width: 100vw;
+        }
+
+        .image-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-container img {
+            max-width: 100px;
+            max-height: 100px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+	<div class="image-grid">
+        <div class="image-container">
+            <img src="assets/3.png" alt="Image 1">
+        </div>
+        <div class="image-container">
+            <img src="assets/333_wordmark_white.png" alt="Image 2">
+        </div>
+        <div class="image-container">
+            <img src="assets/favicon.ico" alt="Image 3">
+        </div>
+        <div class="image-container">
+            <img src="assets/333_wordmark_black.png" alt="Image 4">
+        </div>
+    </div>
+	<script src="script.js"></script>
+</body>
+
+</html>
