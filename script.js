@@ -1,25 +1,51 @@
-const targetDate = new Date('May 3, 2024 23:59:00').getTime();
+document.getElementById('searchInput').addEventListener('input', function() {
+            var searchValue = this.value.toLowerCase();
+            var images = document.querySelectorAll('#imageGallery img');
 
-        // Update the countdown every second
-        const timer = setInterval(updateCountdown, 1000);
+            images.forEach(function(img) {
+                var altText = img.alt.toLowerCase();
+                var parentDiv = img.parentElement.parentElement;
 
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = targetDate - now;
+                if (altText.includes(searchValue)) {
+                    parentDiv.style.display = 'block';
+                } else {
+                    parentDiv.style.display = 'none';
+                }
+            });
+        });
+function adjustStylesForScreenSize() {
+    var screenWidth = window.innerWidth;
+const isMobile = window.matchMedia("only screen and (max-width: 768px)").matches;
 
-            if (distance < 0) {
-                clearInterval(timer);
-                document.getElementById('countdown').innerHTML = 'EXPIRED';
-                return;
-            }
+	if (isMobile) { // Adjust styles for smaller screens
+        document.getElementById('navbtn').style.fontSize = '10px';
+		document.getElementById('navbtn2').style.fontSize = '10px';
+		document.getElementById('LLogo').style.top = '12.5%';
+		document.getElementById('RLogo').style.top = '12.5%';
+		document.getElementById('MLogo').style.top = '5%';
+        document.getElementById('searchInput').style.fontSize = '12px';
+        document.getElementById('searchInput').style.width = '100px';
+        document.getElementById('searchContainer').style.padding = '5px';
+        document.getElementById('navbtn').style.padding = '5px 10px';
+		document.getElementById('navbtn2').style.padding = '5px 10px';
+        document.querySelector('.grid-container').style.marginTop = '40px';
+		document.getElementById('banner').style.fontSize = '10px';
+    } else {
+        document.getElementById('navbtn').style.fontSize = '20px';
+		document.getElementById('navbtn2').style.fontSize = '20px';
+		document.getElementById('LLogo').style.top = '27%';
+		document.getElementById('RLogo').style.top = '27%';
+		document.getElementById('MLogo').style.top = '1%';
+        document.getElementById('searchInput').style.fontSize = '16px';
+        document.getElementById('searchInput').style.width = '200px';
+        document.getElementById('searchContainer').style.padding = '10px';
+        document.getElementById('navbtn').style.padding = '7px 15px';
+		document.getElementById('navbtn2').style.padding = '7px 15px';
+        document.querySelector('.grid-container').style.marginTop = '50px';
+		document.getElementById('banner').style.fontSize = '15px';
+    }
+}
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById('countdown').innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-        }
-
-        // Initial call to start the countdown
-        updateCountdown();
+// Call the function initially and on window resize
+adjustStylesForScreenSize();
+window.addEventListener('resize', adjustStylesForScreenSize);
